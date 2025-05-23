@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "jasmines-test-mod:block/resonant_stone_block"
+  }
+}

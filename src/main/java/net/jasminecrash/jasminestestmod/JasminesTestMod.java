@@ -2,6 +2,8 @@ package net.jasminecrash.jasminestestmod;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.jasminecrash.jasminestestmod.block.ModBlocks;
+import net.jasminecrash.jasminestestmod.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +20,9 @@ public class JasminesTestMod implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+
+		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 
 		LOGGER.info("Funny log message :3");
 	}
