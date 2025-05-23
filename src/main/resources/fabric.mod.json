@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "jasmines-test-mod",
+	"version": "${version}",
+	"name": "Jasmine's Test Mod",
+	"description": "This is a mod full of stuff and things (clearly). It's also my playground and space for learning how to mod this game!",
+	"authors": [
+		"JasmineCrash"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/jasmines-test-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.jasminecrash.jasminestestmod.JasminesTestMod"
+		],
+		"fabric-datagen": [
+			"net.jasminecrash.jasminestestmod.JasminesTestModDataGenerator"
+		],
+		"client": [
+			"net.jasminecrash.jasminestestmod.JasminesTestModClient"
+		]
+	},
+	"mixins": [
+		"jasmines-test-mod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
