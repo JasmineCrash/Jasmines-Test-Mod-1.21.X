@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    public static final Block RESONANT_STONE = registerBlock("resonant_stone_block", new Block(
+    public static final Block RESONANT_STONE_BLOCK = registerBlock("resonant_stone_block", new Block(
             AbstractBlock.Settings.create()
                     .strength(0.6f)
                     .solid()
@@ -45,9 +45,9 @@ public class ModBlocks {
     public static void registerModBlocks() {
         JasminesTestMod.LOGGER.info("Beginning Block Registration...");
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-            entries.add(ModBlocks.RESONANT_STONE);
-        });
+//        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+//            entries.add(ModBlocks.RESONANT_STONE_BLOCK);
+//        });
 
         JasminesTestMod.LOGGER.info("Block Registration Complete!");
     }

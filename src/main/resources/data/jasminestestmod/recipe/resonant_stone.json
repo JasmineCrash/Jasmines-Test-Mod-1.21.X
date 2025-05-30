@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "jasminestestmod:resonant_stone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "jasminestestmod:resonant_stone"
+  }
+}

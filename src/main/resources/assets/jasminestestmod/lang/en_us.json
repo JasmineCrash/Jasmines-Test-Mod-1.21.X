@@ -1,0 +1,9 @@
+{
+  "item.jasminestestmod.resonator": "Resonator",
+  "item.jasminestestmod.resonant_stone": "Resonant Stone",
+
+  "block.jasminestestmod.resonant_stone_block": "Block of Resonant Stone",
+
+  "itemgroup.jasminestestmod.jasmines_test_mod_items": "Jasmine's Test Mod Items",
+  "itemgroup.jasminestestmod.jasmines_test_mod_blocks": "Jasmine's Test Mod Blocks"
+}
