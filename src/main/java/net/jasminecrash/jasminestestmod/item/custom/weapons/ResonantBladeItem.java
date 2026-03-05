@@ -19,23 +19,42 @@ public class ResonantBladeItem extends Item {
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
-        if (!world.isClient()) {
-            BlockPos strikePos = context.getBlockPos();
-            Block struckBlock = world.getBlockState(strikePos).getBlock();
-            float pitch;
-            float volume;
-            switch (struckBlock.getTranslationKey().split("\\.")[2]) {
-                case "iron_block", "netherite_block" -> {pitch = 5.0f; volume = 2.0f; world.removeBlock(strikePos,false);} //test cases work!
-                case null, default -> {pitch = 1.0f; volume = 1.0f;}
+        if (world.isClient()) { return ActionResult.PASS; }
+        BlockPos strikePos = context.getBlockPos();
+        Block struckBlock = world.getBlockState(strikePos).getBlock();
+        float pitch;
+        float volume;
+        ActionResult result = ActionResult.PASS;
+        switch (struckBlock.getTranslationKey().split("\\.")[2]) {
+            case "iron_block", "netherite_block" -> {
+                pitch = 5.0f;
+                volume = 2.0f;
+                world.removeBlock(strikePos,false);
+                result = ActionResult.SUCCESS;
+            } //test cases work!
+            default -> {
+                pitch = 1.0f;
+                volume = 1.0f;
             }
-            world.playSound(strikePos.getX(), strikePos.getY(), strikePos.getZ(), SoundEvents.BLOCK_METAL_HIT, SoundCategory.MASTER, volume, pitch, true);
         }
-        return ActionResult.PASS;
+        world.playSound(
+                null,
+                strikePos,
+                SoundEvents.BLOCK_METAL_BREAK, SoundCategory.PLAYERS,
+                volume, pitch
+        );
+        return result;
     }
 
     @Override
-    public void postDamageEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         stack.damage(1, attacker, EquipmentSlot.MAINHAND);
-        attacker.playSound(SoundEvents.ENTITY_WARDEN_SONIC_BOOM);
+        attacker.getWorld().playSound(
+                null,
+                attacker.getBlockPos(),
+                SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.PLAYERS,
+                1.0f, 1.0f
+        );
+        return true;
     }
 }
